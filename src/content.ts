@@ -366,7 +366,7 @@ export const team: Member[] = [
     bio: "Konrád Gózon is a Computer Science and Engineering student at Ohio State who builds AI-powered software, from real-time voice and vision tools to full-stack web apps. He has won experience through hackathons like HackAI and HackOHI/O, competes in CTFs, and develops computer vision software for the OSU's underwater robotics team. Previously, he interned at Planck AI, where he built an AI red-teaming pipeline.",
     linkedin: "https://www.linkedin.com/in/konrad-gozon/",
     github: "https://github.com/25kgozon",
-    resume: "team/TODO-resume.pdf",
+    resume: "resumes/Konrad_Resume_OCT26.pdf",
   },
   {
     name: "Rocky Shao",
