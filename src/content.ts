@@ -1,12 +1,13 @@
 // All site copy lives here. Edit this file to customize the page.
 import {
-  AppWindow, Binary, BookOpen, Bot, Code2, Cpu, FileCheck2, FileText, Layers,
-  Lock, Package, ScanSearch, Search, ShieldCheck, Target, Unlink, type LucideIcon,
+  AppWindow, Binary, BookOpen, Bot, Boxes, Cloud, Code2, Cpu, Eye, FileCheck2, FileText, Layers,
+  Lock, Package, Radio, ScanSearch, Search, Server, ShieldCheck, Syringe, Target, Unlink, type LucideIcon,
 } from "lucide-react";
 
 export const site = {
   name: "Splice",
   event: "HackOHIO 2026",
+  award: "Most Original Award",
   tagline: "Rebuild any app's features from its real behavior, verified against the original.",
   summary:
     "Pick features from existing software. Splice traces how they really work, writes a requirements spec checked against the original program, then has AI implement a clean version that must pass those same checks.",
@@ -50,52 +51,6 @@ export interface Track {
 }
 
 export const tracks: Track[] = [
-  {
-    id: "electron",
-    label: "Desktop app track",
-    blurb: "Electron apps: from a packaged app to a new app you can edit, built from verified engines.",
-    stages: [
-      {
-        icon: Package,
-        title: "Original app",
-        detail: "The user picks a feature from a pantry of real desktop apps, shipped as packaged Electron archives.",
-        input: "Packaged app (.asar)",
-        output: "Feature seed",
-        handoff: "Feature seed",
-      },
-      {
-        icon: Search,
-        title: "Evidence collection",
-        detail: "REA, an MCP server, inspects the archive and traces the real code behind the feature, citing every source line.",
-        input: "Archive + feature seed",
-        output: "Cited source evidence",
-        handoff: "RawEvidence",
-      },
-      {
-        icon: FileCheck2,
-        title: "Requirements spec",
-        detail: "An LLM writes numbered behaviors, a TypeScript interface, and acceptance tests. The tests run against the ORIGINAL code in a sandbox, so the spec matches reality.",
-        input: "RawEvidence",
-        output: "Spec + tests the original passes",
-        handoff: "FeatureSpec",
-      },
-      {
-        icon: Cpu,
-        title: "Clean engine",
-        detail: "A model implements a pure TypeScript engine from the spec alone, then repairs it until every acceptance test passes.",
-        input: "FeatureSpec",
-        output: "Locked, passing engine",
-        handoff: "FeatureBlueprint",
-      },
-      {
-        icon: AppWindow,
-        title: "Fused app",
-        detail: "Selected engines are combined unchanged, a React UI is generated around them, and it runs live in Sandpack. You can refine it by chat.",
-        input: "FeatureBlueprints + prompt",
-        output: "Running app bundle",
-      },
-    ],
-  },
   {
     id: "native",
     label: "Native binary track",
@@ -166,12 +121,184 @@ export const tracks: Track[] = [
       },
     ],
   },
+  {
+    id: "electron",
+    label: "Desktop app track",
+    blurb: "Electron apps: from a packaged app to a new app you can edit, built from verified engines.",
+    stages: [
+      {
+        icon: Package,
+        title: "Original app",
+        detail: "The user picks a feature from a pantry of real desktop apps, shipped as packaged Electron archives.",
+        input: "Packaged app (.asar)",
+        output: "Feature seed",
+        handoff: "Feature seed",
+      },
+      {
+        icon: Search,
+        title: "Evidence collection",
+        detail: "REA, an MCP server, inspects the archive and traces the real code behind the feature, citing every source line.",
+        input: "Archive + feature seed",
+        output: "Cited source evidence",
+        handoff: "RawEvidence",
+      },
+      {
+        icon: FileCheck2,
+        title: "Requirements spec",
+        detail: "An LLM writes numbered behaviors, a TypeScript interface, and acceptance tests. The tests run against the ORIGINAL code in a sandbox, so the spec matches reality.",
+        input: "RawEvidence",
+        output: "Spec + tests the original passes",
+        handoff: "FeatureSpec",
+      },
+      {
+        icon: Cpu,
+        title: "Clean engine",
+        detail: "A model implements a pure TypeScript engine from the spec alone, then repairs it until every acceptance test passes.",
+        input: "FeatureSpec",
+        output: "Locked, passing engine",
+        handoff: "FeatureBlueprint",
+      },
+      {
+        icon: AppWindow,
+        title: "Fused app",
+        detail: "Selected engines are combined unchanged, a React UI is generated around them, and it runs live in Sandpack. You can refine it by chat.",
+        input: "FeatureBlueprints + prompt",
+        output: "Running app bundle",
+      },
+    ],
+  },
 ];
 
-export const stack = [
-  "React", "TypeScript", "Vite", "Tailwind", "Express + SSE", "Sandpack",
-  "Python", "Ghidra", "MCP (REA)", "AWS Bedrock", "Qwen3 Coder", "PostgreSQL",
-  "Docker", "EC2 + S3", "GitHub Actions",
+// Architecture + orchestration data ported from the launch film
+// (HackOHIO_2026_Video/.../src/TechScenes.tsx), which audited it against docs/ARCHITECTURE.md and models.json.
+
+export type ArchNodeId = "studio" | "api" | "bedrock" | "ec2" | "worker" | "probes" | "s3" | "queue";
+
+/** `step` orders the build-up animation. `logos` are files in public/logos (see CREDITS.md there). */
+export const archNodes: { id: ArchNodeId; title: string; detail: string; logos?: string[]; step: number; dashed?: boolean }[] = [
+  { id: "studio", title: "Studio", detail: "React · Zustand · Sandpack", logos: ["react.svg", "vite.svg"], step: 0 },
+  { id: "api", title: "API", detail: "Node · Express · Zod · SSE", logos: ["node.svg", "express.svg", "zod.svg"], step: 1 },
+  { id: "bedrock", title: "Amazon Bedrock", detail: "Converse · role models", logos: ["bedrock.png"], step: 2 },
+  { id: "ec2", title: "EC2 runner", detail: "SSM · scoped native run", logos: ["ec2.png", "docker.svg"], step: 2 },
+  { id: "worker", title: "Native worker", detail: "OpenCode · Ghidra MCP", logos: ["python.svg", "opencode.svg", "ghidra.png"], step: 3 },
+  { id: "probes", title: "Original program", detail: "Frida · UNO / CLI probes", step: 3.4 },
+  { id: "s3", title: "Private S3", detail: "results · library · cache", logos: ["s3.png"], step: 4 },
+  { id: "queue", title: "Engine CLI queue", detail: "PostgreSQL · separate path", logos: ["postgresql.svg"], step: 5, dashed: true },
+];
+
+export const archEdges: { from: ArchNodeId; to: ArchNodeId; label: string; step: number }[] = [
+  { from: "studio", to: "api", label: "REST + SSE", step: 1 },
+  { from: "api", to: "bedrock", label: "Converse", step: 2 },
+  { from: "api", to: "ec2", label: "SSM", step: 2 },
+  { from: "ec2", to: "worker", label: "scoped run", step: 3 },
+  { from: "worker", to: "bedrock", label: "native roles", step: 3.2 },
+  { from: "worker", to: "probes", label: "probe", step: 3.4 },
+  { from: "ec2", to: "s3", label: "artifacts", step: 4 },
+  { from: "api", to: "s3", label: "library", step: 4.2 },
+];
+
+export const modelRoles = [
+  { role: "Spec · engine · UI", model: "Qwen3 Coder 480B" },
+  { role: "Adjudicator · broker", model: "DeepSeek V3.2" },
+  { role: "Watchdog", model: "GLM-5" },
+  { role: "Independent review", model: "Claude Opus 4.6" },
+];
+
+export const orchestrator = {
+  title: "Orchestrator",
+  lines: ["Express jobs · POST-SSE", "EC2 scoped runner", "CLI lease queue · PostgreSQL"],
+};
+
+export const watchdog = {
+  title: "Watchdog",
+  detail: "GLM-5 · adjusts routing and budgets",
+  limit: "Cannot edit evidence, probes, or claims",
+};
+
+// Checked against HackOHIO_2026/models.json (dev, 1401ac8) and the code that resolves each role;
+// re-check there if models.json changes.
+export const agentRoster: { role: string; model: string; limit: string }[] = [
+  { role: "Semantic agent", model: "Qwen3 Coder 480B", limit: "cites evidence" },
+  { role: "Independent reviewer", model: "Qwen3 32B / Claude Opus 4.6", limit: "verdicts only" },
+  { role: "Investigator", model: "Qwen3 Coder 480B", limit: "read-only REA / Ghidra MCP" },
+  { role: "Adjudicator", model: "DeepSeek V3.2", limit: "independent gap review" },
+  { role: "Discovery agent", model: "Qwen3 Coder 480B", limit: "up to five capabilities" },
+  { role: "Spec writer", model: "Qwen3 Coder 480B", limit: "public contract" },
+  { role: "Engine writer", model: "Qwen3 Coder 480B", limit: "source withheld" },
+  { role: "Conformance oracle", model: "trusted checks, not a model", limit: "leak · purity · tests" },
+  { role: "UI synthesizer", model: "Qwen3 Coder 480B", limit: "locked engines" },
+  { role: "Cleanroom broker", model: "DeepSeek V3.2", limit: "disclosure filter" },
+  { role: "Cleanroom implementer", model: "Qwen3 Coder 480B", limit: "disposable container · public artifacts only" },
+];
+
+/**
+ * `logo` is a file in public/logos (see CREDITS.md there). Brands with no openly licensed mark
+ * (Zustand, Frida, GLM, the SSE protocol) get a generic `icon` instead.
+ */
+export const stack: {
+  icon: LucideIcon;
+  title: string;
+  blurb: string;
+  items: { name: string; logo?: string; icon?: LucideIcon; what: string }[];
+}[] = [
+  {
+    icon: AppWindow,
+    title: "Interface",
+    blurb: "The Studio where people pick features and edit the app they built.",
+    items: [
+      { name: "React + Vite", logo: "react.svg", what: "Studio UI and fast dev builds" },
+      { name: "TypeScript", logo: "typescript.svg", what: "One typed language from contracts to UI" },
+      { name: "Tailwind", logo: "tailwindcss.svg", what: "Styling for Studio and generated apps" },
+      { name: "Zustand", icon: Boxes, what: "Session state and pipeline orchestration" },
+      { name: "Sandpack", logo: "codesandbox.svg", what: "Runs generated apps live in the browser" },
+    ],
+  },
+  {
+    icon: Server,
+    title: "API",
+    blurb: "One backend that streams every pipeline step as it happens.",
+    items: [
+      { name: "Node + Express", logo: "node.svg", what: "Extraction, implementation, and synthesis routes" },
+      { name: "Server-Sent Events", icon: Radio, what: "Live progress for each phase" },
+      { name: "Zod", logo: "zod.svg", what: "Shared schemas validate every handoff" },
+    ],
+  },
+  {
+    icon: Bot,
+    title: "AI models",
+    blurb: "Each agent role gets its own model, routed from one config file.",
+    items: [
+      { name: "AWS Bedrock Converse", logo: "bedrock.png", what: "One API for every model role" },
+      { name: "Qwen3 Coder 480B · Qwen3 32B", logo: "qwen.svg", what: "Claims, specs, engines, UI, and review" },
+      { name: "DeepSeek V3.2", logo: "deepseek.svg", what: "Adjudication and the cleanroom broker" },
+      { name: "GLM-5", icon: Eye, what: "Watchdog supervision" },
+      { name: "Claude Opus 4.6", logo: "claude.svg", what: "Independent review" },
+      { name: "OpenCode", logo: "opencode.svg", what: "Worker runtime, with tools denied" },
+    ],
+  },
+  {
+    icon: ScanSearch,
+    title: "Reverse engineering",
+    blurb: "How Splice reads programs it has no source code for.",
+    items: [
+      { name: "Ghidra", logo: "ghidra.png", what: "Indexes and decompiles every function" },
+      { name: "REA over MCP", logo: "modelcontextprotocol.svg", what: "Traces real code inside Electron apps" },
+      { name: "Frida", icon: Syringe, what: "Runtime probes on the original program" },
+      { name: "Python", logo: "python.svg", what: "Decompilation engine and CLI" },
+    ],
+  },
+  {
+    icon: Cloud,
+    title: "Infrastructure",
+    blurb: "Scales to 16+ parallel workers and keeps the cleanroom sealed.",
+    items: [
+      { name: "PostgreSQL", logo: "postgresql.svg", what: "Lease queue for parallel workers" },
+      { name: "Docker", logo: "docker.svg", what: "Worker images and the sealed cleanroom" },
+      { name: "EC2 + SSM", logo: "ec2.png", what: "Scoped native analysis runs" },
+      { name: "S3", logo: "s3.png", what: "Private, content-addressed artifact cache" },
+      { name: "GitHub Actions + Playwright", logo: "githubactions.svg", what: "CI builds and end-to-end Studio tests" },
+    ],
+  },
 ];
 
 export const results: { value: number; suffix?: string; label: string; caveat: string }[] = [
@@ -213,30 +340,30 @@ export interface Member {
 // TODO: replace with your team.
 export const team: Member[] = [
   {
-    name: "Teammate One",
-    role: "Reverse engineering",
-    bio: "Built the evidence collector and REA bridge. Replace this with 2–3 sentences about your background and what you built.",
+    name: "Jason Seh",
+    role: "Cloud Infrastructure & Feature Implementation",
+    bio: "AI Engineering Intern at The Center for Software Innovation x Honda and AI/ML Research Engineer at NSF ICICLE AI Institute.",
     linkedin: "https://www.linkedin.com/in/TODO",
     github: "https://github.com/TODO",
   },
   {
-    name: "Teammate Two",
-    role: "Requirements extraction",
-    bio: "Built spec generation and the sandbox that tests specs against the original code. Replace with your bio.",
+    name: "Mitchell Eickhoff",
+    role: "Reverse Engineering Engine",
+    bio: "Placeholder",
     linkedin: "https://www.linkedin.com/in/TODO",
     github: "https://github.com/TODO",
   },
   {
-    name: "Teammate Three",
-    role: "Implementation + Studio",
-    bio: "Built engine implementation, UI synthesis, and the Studio frontend. Replace with your bio.",
+    name: "Konrad Gozon",
+    role: "Feature and Spec Extraction",
+    bio: "Placeholder",
     linkedin: "https://www.linkedin.com/in/TODO",
     github: "https://github.com/TODO",
   },
   {
-    name: "Teammate Four",
-    role: "Native decompilation",
-    bio: "Built the Ghidra pipeline, worker queue, and C reimplementation loop. Replace with your bio.",
+    name: "Rocky Shao",
+    role: "Slideshow and Video",
+    bio: "Placeholder",
     linkedin: "https://www.linkedin.com/in/TODO",
     github: "https://github.com/TODO",
   },

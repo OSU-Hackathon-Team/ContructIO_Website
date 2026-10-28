@@ -1,9 +1,12 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import { team, type Member } from "../content";
-import { Reveal, Section } from "../components/Section";
+import { pressable, Reveal, Section } from "../components/Section";
+import { cn } from "../lib/cn";
 
-const iconLink =
-  "grid size-9 place-items-center rounded-lg border border-white/10 bg-white/5 text-stone-300 transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/60";
+const iconLink = cn(
+  "grid size-11 place-items-center rounded-lg border border-white/10 bg-white/5 text-stone-300 hover:bg-white/10 hover:text-white",
+  pressable
+);
 
 function Avatar({ member }: { member: Member }) {
   if (member.photo) {
@@ -26,9 +29,9 @@ function Avatar({ member }: { member: Member }) {
 export function Team() {
   return (
     <Section id="team" eyebrow="The team" title="Who built Splice">
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
         {team.map((m, i) => (
-          <Reveal key={m.name} delay={i * 0.08} className="flex flex-col rounded-xl border border-white/10 bg-white/[0.03] p-6">
+          <Reveal key={m.name} delay={i * 0.08} className="flex flex-col rounded-xl border border-white/10 bg-[#1f1c19] p-5 sm:p-6">
             <div className="flex items-center gap-4">
               <Avatar member={m} />
               <div className="min-w-0">

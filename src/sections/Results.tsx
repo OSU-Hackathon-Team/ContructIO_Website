@@ -28,15 +28,15 @@ export function Results() {
       title="Measured against the original, not against itself"
       intro="Numbers from recorded runs in our repo. Each comes with its scope, because honest evidence is the whole point."
     >
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
         {results.map((r, i) => (
-          <Reveal key={r.label} delay={i * 0.08} className="rounded-xl border border-white/10 bg-white/[0.03] p-6">
-            <p className="text-4xl font-semibold tabular-nums text-emerald-400">
+          <Reveal key={r.label} delay={i * 0.08} className="rounded-xl border border-white/10 bg-[#1f1c19] p-4 sm:p-6">
+            <p className="text-3xl font-semibold tabular-nums text-emerald-400 sm:text-4xl">
               <Counter to={r.value} />
               {r.suffix}
             </p>
-            <p className="mt-2 font-medium">{r.label}</p>
-            <p className="mt-3 text-sm text-stone-500">{r.caveat}</p>
+            <p className="mt-2 text-sm font-medium sm:text-base">{r.label}</p>
+            <p className="mt-2 text-xs text-stone-500 sm:mt-3 sm:text-sm">{r.caveat}</p>
           </Reveal>
         ))}
       </div>
