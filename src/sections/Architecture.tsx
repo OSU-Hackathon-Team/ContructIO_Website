@@ -97,7 +97,7 @@ export function Architecture() {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth={lg ? 2 : 1.5}
-                  className="text-emerald-500/60"
+                  className="text-amber-500/60"
                   variants={{
                     hidden: { pathLength: reduce ? 1 : 0 },
                     show: { pathLength: 1, transition: { delay, duration: 0.45, ease: "easeOut" } },
@@ -110,7 +110,7 @@ export function Architecture() {
                   transform={g.rotate ? `rotate(-90 ${g.lx} ${g.ly})` : undefined}
                   fontSize={lg ? 13 : 11}
                   className="fill-stone-400"
-                  stroke="#181614"
+                  stroke="#0a0a0a"
                   strokeWidth={5}
                   strokeLinejoin="round"
                   paintOrder="stroke"
@@ -134,7 +134,7 @@ export function Architecture() {
               }}
               style={{ left: pct(x, L.w), top: pct(y, L.h), width: pct(L.node.w, L.w), height: pct(L.node.h, L.h) }}
               className={cn(
-                "absolute flex flex-col justify-center rounded-xl border bg-[#1f1c19] px-2.5 lg:px-3.5",
+                "absolute flex flex-col justify-center rounded-xl border bg-[#141414] px-2.5 lg:px-3.5",
                 n.dashed ? "border-dashed border-white/25 opacity-85" : "border-white/15"
               )}
             >
@@ -156,7 +156,7 @@ export function Architecture() {
         {modelRoles.map((r) => (
           <p key={r.role} className="border-t border-white/10 pt-2 text-xs text-stone-500">
             {r.role}
-            <b className="block text-sm font-medium text-emerald-300">{r.model}</b>
+            <b className="block text-sm font-medium text-amber-300">{r.model}</b>
           </p>
         ))}
       </Reveal>

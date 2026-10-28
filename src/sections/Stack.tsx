@@ -50,15 +50,15 @@ export function Stack() {
         onScroll={updateEdges}
         tabIndex={0}
         aria-label="Technologies by layer"
-        className="-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto overscroll-x-contain px-4 pb-2 [scrollbar-width:none] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/60 sm:-mx-6 sm:scroll-px-6 sm:px-6 [&::-webkit-scrollbar]:hidden"
+        className="-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto overscroll-x-contain px-4 pb-2 [scrollbar-width:none] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 sm:-mx-6 sm:scroll-px-6 sm:px-6 [&::-webkit-scrollbar]:hidden"
       >
         {stack.map((layer) => (
           // 85% wide on phones so the next card peeks in and invites a swipe.
           <li key={layer.title} className="w-[85%] shrink-0 snap-start sm:w-[22rem]">
             {/* No card-level fade: it would hide the peeking card that signals the row scrolls. */}
-            <div className="h-full rounded-xl border border-white/10 bg-[#1f1c19] p-5 sm:p-6">
+            <div className="h-full rounded-xl border border-white/10 bg-[#141414] p-5 sm:p-6">
               <div className="flex items-center gap-2">
-                <layer.icon className="size-5 text-emerald-400" aria-hidden />
+                <layer.icon className="size-5 text-amber-400" aria-hidden />
                 <h3 className="text-lg font-semibold">{layer.title}</h3>
               </div>
               <p className="mt-1 text-sm text-stone-400">{layer.blurb}</p>
@@ -75,7 +75,7 @@ export function Stack() {
                     <motion.span
                       variants={{ hidden: { opacity: 0, scale: 0.6 }, show: { opacity: 1, scale: 1 } }}
                       transition={{ type: "spring", duration: 0.35, bounce: 0 }}
-                      className={cn(tile, item.logo ? "bg-stone-100 p-1.5" : "bg-emerald-500/15 p-1.5 text-emerald-300")}
+                      className={cn(tile, item.logo ? "bg-stone-100 p-1.5" : "bg-amber-500/15 p-1.5 text-amber-300")}
                     >
                       {item.logo ? (
                         <img src={`${import.meta.env.BASE_URL}logos/${item.logo}`} alt="" className="size-full object-contain" />

@@ -1,4 +1,5 @@
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "motion/react";
+import { useMediaQuery } from "../lib/useMediaQuery";
 
 // One continuous scene behind the whole page. Every layer is scroll-linked (nothing moves
 // while the reader is still), animates transform/opacity only, and stays faint.
@@ -35,7 +36,9 @@ export function Backdrop() {
   const strandsY = useTransform(scrollY, [0, 2000], [0, -400]);
   const strandsOpacity = useTransform(scrollY, [0, 900], [1, 0.35]);
 
-  const bind = <T,>(value: T) => (reduce ? undefined : value);
+  // JS-driven parallax lags native touch scrolling and reads as jitter, so phones get a still scene.
+  const parallax = useMediaQuery("(min-width: 1024px) and (pointer: fine)") && !reduce;
+  const bind = <T,>(value: T) => (parallax ? value : undefined);
 
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
@@ -55,7 +58,7 @@ export function Backdrop() {
         style={{ y: bind(strandsY), opacity: bind(strandsOpacity) }}
         viewBox="0 0 1440 900"
         preserveAspectRatio="xMidYMid slice"
-        className="absolute inset-x-0 top-0 h-[140dvh] w-full text-emerald-500"
+        className="absolute inset-x-0 top-0 h-[140svh] w-full text-amber-500"
         fill="none"
         stroke="currentColor"
       >

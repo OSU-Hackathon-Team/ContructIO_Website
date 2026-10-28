@@ -11,7 +11,7 @@ export const site = {
   tagline: "Rebuild any app's features from its real behavior, verified against the original.",
   summary:
     "Pick features from existing software. Splice traces how they really work, writes a requirements spec checked against the original program, then has AI implement a clean version that must pass those same checks.",
-  repoUrl: "https://github.com/TODO/splice", // TODO: your repo
+  repoUrl: "https://github.com/OSU-Hackathon-Team/HackOHIO_2026", // TODO: your repo
   contactEmail: "team@example.com", // TODO
 };
 
@@ -377,3 +377,48 @@ export const team: Member[] = [
     resume: "resumes/Rocky Shao Resume.pdf",
   },
 ];
+
+// Event facts from hack.osu.edu/2026 (checked 2026-10-27). The site does not publish registrations;
+// 1,100+ is the team's own figure from the organizers.
+export const about = {
+  title: "What Splice is",
+  body: [
+    "Splice rebuilds software features from how they actually behave. Point it at a desktop app or a compiled binary: AI agents trace what a feature really does, write a spec that is checked against the original program, and rebuild the feature as clean, tested code. No source code required.",
+    "Every claim is backed by evidence from the original, and every rebuild is graded on test cases the model never saw.",
+  ],
+  award: {
+    name: "Most Original Award",
+    event: "HackOHIO 2026",
+    criteria: "Given to the project with the most unique and innovative concept.",
+    context: "HackOHI/O is Ohio State's largest annual hackathon: 24 hours of building at the Ohio Union, October 24–25, 2026.",
+    team: "Team 4C²",
+    // Web copies in public/images (metadata stripped); originals live in the git-ignored photo-originals/.
+    photos: {
+      win: {
+        name: "win",
+        alt: "Two members of Team 4C² on the HackOHIO stage, holding their awards in front of a slide describing Splice.",
+        caption: "On stage at HackOHIO 2026, in front of the slide that introduced Splice.",
+      },
+      team: {
+        name: "team",
+        alt: "The four members of Team 4C² holding up a HackOHIO shirt in the Ohio Union ballroom.",
+        caption: "Team 4C², left to right: Mitchell Eickhoff, Konrad Gozon, Jason Seh, and Rocky Shao.",
+      },
+    },
+  },
+  stats: [
+    { value: 1100, suffix: "+", label: "signed up" },
+    { value: 800, suffix: "+", label: "students competing" },
+    { value: 60, suffix: "+", label: "majors represented" },
+    { value: 24, label: "hours to build" },
+  ],
+};
+
+// H.264 web copy of the launch film (original HEVC in the git-ignored photo-originals/; HEVC won't play in Firefox).
+export const film = {
+  title: "Splice in under three minutes",
+  blurb: "The launch film from HackOHIO: the problem, the pipeline, and the results, narrated end to end.",
+  src: "video/splice-film.mp4",
+  poster: "video/splice-film-poster.jpg",
+  length: "2:50",
+};

@@ -72,7 +72,7 @@ export function DataFlow() {
             className={cn(
               control,
               "px-3 text-sm font-medium sm:px-4",
-              t.id === trackId && "border-emerald-500/40 bg-emerald-500/15 text-emerald-200 hover:bg-emerald-500/20"
+              t.id === trackId && "border-amber-500/40 bg-amber-500/15 text-amber-200 hover:bg-amber-500/20"
             )}
           >
             {t.label}
@@ -110,11 +110,11 @@ export function DataFlow() {
                     "flex min-h-11 items-center gap-2 whitespace-nowrap rounded-xl border px-3 text-left lg:w-full lg:gap-3 lg:px-4 lg:py-3",
                     pressable,
                     i === active
-                      ? "border-emerald-500/50 bg-emerald-500/10"
-                      : "border-white/10 bg-[#1f1c19] hover:bg-[#262320]"
+                      ? "border-amber-500/50 bg-amber-500/10"
+                      : "border-white/10 bg-[#141414] hover:bg-[#1c1c1c]"
                   )}
                 >
-                  <s.icon className={cn("size-5 shrink-0", i === active ? "text-emerald-400" : "text-stone-400")} aria-hidden />
+                  <s.icon className={cn("size-5 shrink-0", i === active ? "text-amber-400" : "text-stone-400")} aria-hidden />
                   <span className="text-sm font-medium lg:truncate lg:text-base">{s.title}</span>
                   <span className="ml-auto hidden text-xs tabular-nums text-stone-500 lg:inline">{i + 1}</span>
                 </button>
@@ -126,7 +126,7 @@ export function DataFlow() {
         <div className="lg:sticky lg:top-20 lg:self-start">
           <div
             aria-live={playing ? "off" : "polite"}
-            className="min-h-[23rem] rounded-2xl border border-white/10 bg-[#1f1c19] p-5 sm:min-h-[20rem] sm:p-8"
+            className="min-h-[23rem] rounded-2xl border border-white/10 bg-[#141414] p-5 sm:min-h-[20rem] sm:p-8"
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
@@ -140,8 +140,8 @@ export function DataFlow() {
                   Phase {active + 1} of {stages.length}
                 </p>
                 <div className="mt-3 flex items-center gap-3">
-                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-emerald-500/15">
-                    <stage.icon className="size-6 text-emerald-400" aria-hidden />
+                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-amber-500/15">
+                    <stage.icon className="size-6 text-amber-400" aria-hidden />
                   </span>
                   <h3 className="text-xl font-semibold sm:text-2xl">{stage.title}</h3>
                 </div>
@@ -152,7 +152,7 @@ export function DataFlow() {
                 </dl>
                 {stage.handoff && (
                   <p className="mt-4 text-sm text-stone-400">
-                    Hands off <code className="rounded bg-white/10 px-1.5 py-0.5 text-emerald-300">{stage.handoff}</code> to{" "}
+                    Hands off <code className="rounded bg-white/10 px-1.5 py-0.5 text-amber-300">{stage.handoff}</code> to{" "}
                     {stages[active + 1].title.toLowerCase()}.
                   </p>
                 )}
@@ -189,7 +189,7 @@ function IO({ label, value, accent }: { label: string; value: string; accent?: b
   return (
     <div className="rounded-lg border border-white/10 bg-black/20 p-3">
       <dt className="text-xs text-stone-500">{label}</dt>
-      <dd className={cn("mt-1 font-medium", accent ? "text-emerald-300" : "text-stone-200")}>{value}</dd>
+      <dd className={cn("mt-1 font-medium", accent ? "text-amber-300" : "text-stone-200")}>{value}</dd>
     </div>
   );
 }
@@ -209,9 +209,9 @@ function Connector({
   animate: boolean;
   packetKey: string;
 }) {
-  const line = live ? "bg-emerald-500/70" : "bg-white/15";
+  const line = live ? "bg-amber-500/70" : "bg-white/15";
   const packet = { duration: 0.7, ease: "easeInOut" } as const;
-  const dot = "absolute top-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-400";
+  const dot = "absolute top-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-400";
 
   return (
     <motion.li
@@ -261,7 +261,7 @@ function Connector({
             transition={{ duration: 0.2, ease: "easeOut", delay: live ? 0.35 : 0 }}
             className={cn(
               "whitespace-nowrap rounded-md border px-1.5 py-0.5 font-mono text-[11px]",
-              live ? "border-emerald-400/40 bg-emerald-400/10 text-emerald-300" : "border-white/10 bg-white/5 text-stone-500"
+              live ? "border-amber-400/40 bg-amber-400/10 text-amber-300" : "border-white/10 bg-white/5 text-stone-500"
             )}
           >
             {label}

@@ -4,6 +4,7 @@ import { ArrowDown, Github } from "lucide-react";
 import { site } from "../content";
 import { cn } from "../lib/cn";
 import { pressable } from "../components/Section";
+import { useMediaQuery } from "../lib/useMediaQuery";
 
 const button = cn(
   "inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border px-5 font-medium",
@@ -22,6 +23,7 @@ export function Hero() {
   const words = site.tagline.split(" ");
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
+  const parallax = useMediaQuery("(min-width: 1024px) and (pointer: fine)");
   // As the reader scrolls on, the hero drifts up and fades: scroll-linked, so it never moves on its own.
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, -80]);
@@ -31,8 +33,9 @@ export function Hero() {
     <motion.section
       ref={ref}
       id="top"
-      style={reduce ? undefined : { y, opacity }}
-      className="mx-auto flex min-h-[calc(100dvh-3.5rem)] max-w-6xl flex-col justify-center px-4 py-12 sm:px-6 sm:py-20"
+      // Desktop only: on touch screens the scroll-linked fade lags the finger (see Backdrop).
+      style={parallax && !reduce ? { y, opacity } : undefined}
+      className="mx-auto flex min-h-[calc(100svh-3.5rem)] max-w-6xl flex-col justify-center px-4 py-12 sm:px-6 sm:py-20"
     >
       <h1 className="max-w-4xl text-4xl font-semibold leading-tight sm:mt-4 sm:text-5xl lg:text-6xl">
         {words.map((word, i) => (
@@ -47,7 +50,7 @@ export function Hero() {
         {site.summary}
       </motion.p>
       <motion.div {...fade(0.5)} className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row">
-        <a href="#flow" className={cn(button, "border-emerald-500/30 bg-emerald-600 text-white hover:bg-emerald-500")}>
+        <a href="#flow" className={cn(button, "border-amber-300/40 bg-amber-400 text-stone-950 hover:bg-amber-300")}>
           See how it works <ArrowDown className="size-4" aria-hidden />
         </a>
         <a href={site.repoUrl} className={cn(button, "border-white/10 bg-white/10 text-stone-200 hover:bg-white/15")}>

@@ -20,7 +20,7 @@ function Avatar({ member }: { member: Member }) {
   }
   const initials = member.name.split(" ").map((p) => p[0]).slice(0, 2).join("");
   return (
-    <span aria-hidden className="grid size-16 place-items-center rounded-full bg-emerald-500/15 text-lg font-semibold text-emerald-300">
+    <span aria-hidden className="grid size-16 place-items-center rounded-full bg-amber-500/15 text-lg font-semibold text-amber-300">
       {initials}
     </span>
   );
@@ -31,12 +31,12 @@ export function Team() {
     <Section id="team" eyebrow="The team" title="Who built Splice">
       <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
         {team.map((m, i) => (
-          <Reveal key={m.name} delay={i * 0.08} className="flex flex-col rounded-xl border border-white/10 bg-[#1f1c19] p-5 sm:p-6">
+          <Reveal key={m.name} delay={i * 0.08} className="flex flex-col rounded-xl border border-white/10 bg-[#141414] p-5 sm:p-6">
             <div className="flex items-center gap-4">
               <Avatar member={m} />
               <div className="min-w-0">
                 <h3 className="truncate text-lg font-semibold">{m.name}</h3>
-                <p className="text-sm text-emerald-400">{m.role}</p>
+                <p className="text-sm text-amber-400">{m.role}</p>
               </div>
             </div>
             <p className="mt-4 flex-1 text-stone-400">{m.bio}</p>

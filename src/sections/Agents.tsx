@@ -15,7 +15,7 @@ const slam = (delay: number, from = 1.25) => ({
   show: { opacity: 1, scale: 1, transition: { delay, type: "spring", duration: 0.45, bounce: 0 } },
 }) as const;
 
-const dot = "absolute size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-400";
+const dot = "absolute size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-400";
 
 export function Agents() {
   const ref = useRef<HTMLDivElement>(null);
@@ -34,9 +34,9 @@ export function Agents() {
       <motion.div ref={ref} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.15 }}>
         <motion.div
           variants={slam(WATCHDOG, 1.1)}
-          className="mb-4 flex flex-col gap-2 rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-4 sm:flex-row sm:items-center sm:gap-4"
+          className="mb-4 flex flex-col gap-2 rounded-xl border border-amber-500/40 bg-amber-500/10 p-4 sm:flex-row sm:items-center sm:gap-4"
         >
-          <b className="text-lg font-semibold text-emerald-200">{watchdog.title}</b>
+          <b className="text-lg font-semibold text-amber-200">{watchdog.title}</b>
           <span className="text-sm text-stone-300">{watchdog.detail}</span>
           <motion.em
             variants={slam(LOCK, 1.5)}
@@ -50,7 +50,7 @@ export function Agents() {
         <div className="lg:grid lg:grid-cols-[15rem_4rem_1fr] lg:items-center">
           <motion.div
             variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0, transition: { ease: "easeOut" } } }}
-            className="rounded-xl border border-white/15 bg-[#1f1c19] p-4"
+            className="rounded-xl border border-white/15 bg-[#141414] p-4"
           >
             <h3 className="text-xl font-semibold">{orchestrator.title}</h3>
             {orchestrator.lines.map((line) => (
@@ -67,7 +67,7 @@ export function Agents() {
                     animate={{ x: ["-30%", "100%"] }}
                     transition={{ duration: 2.4, ease: "linear", repeat: Infinity, delay: k * 0.8 }}
                   >
-                    <span className="absolute inset-y-0 left-0 w-1/4 rounded-full bg-emerald-400/80" />
+                    <span className="absolute inset-y-0 left-0 w-1/4 rounded-full bg-amber-400/80" />
                   </motion.span>
                 ))}
             </div>
@@ -77,7 +77,7 @@ export function Agents() {
           <div aria-hidden className="relative ml-8 h-12 w-px lg:hidden">
             <motion.span
               variants={{ hidden: { scaleY: 0 }, show: { scaleY: 1, transition: { delay: BUS, duration: 0.3, ease: "easeOut" } } }}
-              className="absolute inset-0 origin-top bg-emerald-500/60"
+              className="absolute inset-0 origin-top bg-amber-500/60"
             />
             {loop &&
               [0, 1].map((k) => (
@@ -95,7 +95,7 @@ export function Agents() {
           <div aria-hidden className="relative hidden h-px lg:block">
             <motion.span
               variants={{ hidden: { scaleX: 0 }, show: { scaleX: 1, transition: { delay: BUS, duration: 0.3, ease: "easeOut" } } }}
-              className="absolute inset-0 origin-left bg-emerald-500/60"
+              className="absolute inset-0 origin-left bg-amber-500/60"
             />
             {loop &&
               [0, 1].map((k) => (
@@ -116,7 +116,7 @@ export function Agents() {
               <motion.li
                 key={a.role}
                 variants={slam(AGENT(k))}
-                className="relative rounded-xl border border-white/15 bg-[#1f1c19] p-3"
+                className="relative rounded-xl border border-white/15 bg-[#141414] p-3"
               >
                 {/* Flash as each agent comes online (opacity only, so it stays on the compositor). */}
                 <motion.span
@@ -125,10 +125,10 @@ export function Agents() {
                     hidden: { opacity: 0 },
                     show: { opacity: [0, 1, 0], transition: { delay: AGENT(k), duration: 0.7, times: [0, 0.15, 1] } },
                   }}
-                  className="pointer-events-none absolute -inset-px rounded-xl border border-emerald-400"
+                  className="pointer-events-none absolute -inset-px rounded-xl border border-amber-400"
                 />
                 <b className="block text-sm font-medium leading-tight">{a.role}</b>
-                <span className="mt-1 block text-xs text-emerald-300">{a.model}</span>
+                <span className="mt-1 block text-xs text-amber-300">{a.model}</span>
                 <small className="mt-1 block text-xs text-stone-500">{a.limit}</small>
               </motion.li>
             ))}
