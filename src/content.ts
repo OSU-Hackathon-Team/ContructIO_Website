@@ -11,8 +11,8 @@ export const site = {
   tagline: "Rebuild any app's features from its real behavior, verified against the original.",
   summary:
     "Pick features from existing software. Splice traces how they really work, writes a requirements spec checked against the original program, then has AI implement a clean version that must pass those same checks.",
-  repoUrl: "https://github.com/OSU-Hackathon-Team/HackOHIO_2026", // TODO: your repo
-  contactEmail: "team@example.com", // TODO
+  repoUrl: "https://github.com/OSU-Hackathon-Team/HackOHIO_2026",
+  contactEmail: "splice4business@hotmail.com",
 };
 
 export const problems: { icon: LucideIcon; title: string; body: string }[] = [
