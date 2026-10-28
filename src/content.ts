@@ -241,65 +241,65 @@ export const stack: {
   blurb: string;
   items: { name: string; logo?: string; icon?: LucideIcon; what: string }[];
 }[] = [
-  {
-    icon: AppWindow,
-    title: "Interface",
-    blurb: "The Studio where people pick features and edit the app they built.",
-    items: [
-      { name: "React + Vite", logo: "react.svg", what: "Studio UI and fast dev builds" },
-      { name: "TypeScript", logo: "typescript.svg", what: "One typed language from contracts to UI" },
-      { name: "Tailwind", logo: "tailwindcss.svg", what: "Styling for Studio and generated apps" },
-      { name: "Zustand", icon: Boxes, what: "Session state and pipeline orchestration" },
-      { name: "Sandpack", logo: "codesandbox.svg", what: "Runs generated apps live in the browser" },
-    ],
-  },
-  {
-    icon: Server,
-    title: "API",
-    blurb: "One backend that streams every pipeline step as it happens.",
-    items: [
-      { name: "Node + Express", logo: "node.svg", what: "Extraction, implementation, and synthesis routes" },
-      { name: "Server-Sent Events", icon: Radio, what: "Live progress for each phase" },
-      { name: "Zod", logo: "zod.svg", what: "Shared schemas validate every handoff" },
-    ],
-  },
-  {
-    icon: Bot,
-    title: "AI models",
-    blurb: "Each agent role gets its own model, routed from one config file.",
-    items: [
-      { name: "AWS Bedrock Converse", logo: "bedrock.png", what: "One API for every model role" },
-      { name: "Qwen3 Coder 480B · Qwen3 32B", logo: "qwen.svg", what: "Claims, specs, engines, UI, and review" },
-      { name: "DeepSeek V3.2", logo: "deepseek.svg", what: "Adjudication and the cleanroom broker" },
-      { name: "GLM-5", icon: Eye, what: "Watchdog supervision" },
-      { name: "Claude Opus 4.6", logo: "claude.svg", what: "Independent review" },
-      { name: "OpenCode", logo: "opencode.svg", what: "Worker runtime, with tools denied" },
-    ],
-  },
-  {
-    icon: ScanSearch,
-    title: "Reverse engineering",
-    blurb: "How Splice reads programs it has no source code for.",
-    items: [
-      { name: "Ghidra", logo: "ghidra.png", what: "Indexes and decompiles every function" },
-      { name: "REA over MCP", logo: "modelcontextprotocol.svg", what: "Traces real code inside Electron apps" },
-      { name: "Frida", icon: Syringe, what: "Runtime probes on the original program" },
-      { name: "Python", logo: "python.svg", what: "Decompilation engine and CLI" },
-    ],
-  },
-  {
-    icon: Cloud,
-    title: "Infrastructure",
-    blurb: "Scales to 16+ parallel workers and keeps the cleanroom sealed.",
-    items: [
-      { name: "PostgreSQL", logo: "postgresql.svg", what: "Lease queue for parallel workers" },
-      { name: "Docker", logo: "docker.svg", what: "Worker images and the sealed cleanroom" },
-      { name: "EC2 + SSM", logo: "ec2.png", what: "Scoped native analysis runs" },
-      { name: "S3", logo: "s3.png", what: "Private, content-addressed artifact cache" },
-      { name: "GitHub Actions + Playwright", logo: "githubactions.svg", what: "CI builds and end-to-end Studio tests" },
-    ],
-  },
-];
+    {
+      icon: AppWindow,
+      title: "Interface",
+      blurb: "The Studio where people pick features and edit the app they built.",
+      items: [
+        { name: "React + Vite", logo: "react.svg", what: "Studio UI and fast dev builds" },
+        { name: "TypeScript", logo: "typescript.svg", what: "One typed language from contracts to UI" },
+        { name: "Tailwind", logo: "tailwindcss.svg", what: "Styling for Studio and generated apps" },
+        { name: "Zustand", icon: Boxes, what: "Session state and pipeline orchestration" },
+        { name: "Sandpack", logo: "codesandbox.svg", what: "Runs generated apps live in the browser" },
+      ],
+    },
+    {
+      icon: Server,
+      title: "API",
+      blurb: "One backend that streams every pipeline step as it happens.",
+      items: [
+        { name: "Node + Express", logo: "node.svg", what: "Extraction, implementation, and synthesis routes" },
+        { name: "Server-Sent Events", icon: Radio, what: "Live progress for each phase" },
+        { name: "Zod", logo: "zod.svg", what: "Shared schemas validate every handoff" },
+      ],
+    },
+    {
+      icon: Bot,
+      title: "AI models",
+      blurb: "Each agent role gets its own model, routed from one config file.",
+      items: [
+        { name: "AWS Bedrock Converse", logo: "bedrock.png", what: "One API for every model role" },
+        { name: "Qwen3 Coder 480B · Qwen3 32B", logo: "qwen.svg", what: "Claims, specs, engines, UI, and review" },
+        { name: "DeepSeek V3.2", logo: "deepseek.svg", what: "Adjudication and the cleanroom broker" },
+        { name: "GLM-5", icon: Eye, what: "Watchdog supervision" },
+        { name: "Claude Opus 4.6", logo: "claude.svg", what: "Independent review" },
+        { name: "OpenCode", logo: "opencode.svg", what: "Worker runtime, with tools denied" },
+      ],
+    },
+    {
+      icon: ScanSearch,
+      title: "Reverse engineering",
+      blurb: "How Splice reads programs it has no source code for.",
+      items: [
+        { name: "Ghidra", logo: "ghidra.png", what: "Indexes and decompiles every function" },
+        { name: "REA over MCP", logo: "modelcontextprotocol.svg", what: "Traces real code inside Electron apps" },
+        { name: "Frida", icon: Syringe, what: "Runtime probes on the original program" },
+        { name: "Python", logo: "python.svg", what: "Decompilation engine and CLI" },
+      ],
+    },
+    {
+      icon: Cloud,
+      title: "Infrastructure",
+      blurb: "Scales to 16+ parallel workers and keeps the cleanroom sealed.",
+      items: [
+        { name: "PostgreSQL", logo: "postgresql.svg", what: "Lease queue for parallel workers" },
+        { name: "Docker", logo: "docker.svg", what: "Worker images and the sealed cleanroom" },
+        { name: "EC2 + SSM", logo: "ec2.png", what: "Scoped native analysis runs" },
+        { name: "S3", logo: "s3.png", what: "Private, content-addressed artifact cache" },
+        { name: "GitHub Actions + Playwright", logo: "githubactions.svg", what: "CI builds and end-to-end Studio tests" },
+      ],
+    },
+  ];
 
 export const results: { value: number; suffix?: string; label: string; caveat: string }[] = [
   {
@@ -360,7 +360,7 @@ export const team: Member[] = [
     resume: "resumes/Eickhoff_Mitchell_Resume_Aug26.pdf",
   },
   {
-    name: "Konrad Gozon",
+    name: "Konrád Gózon",
     role: "Feature and Spec Extraction",
     photo: "team/konrad.jpg",
     bio: "Konrád Gózon is a Computer Science and Engineering student at Ohio State who builds AI-powered software, from real-time voice and vision tools to full-stack web apps. He has won experience through hackathons like HackAI and HackOHI/O, competes in CTFs, and develops computer vision software for the OSU's underwater robotics team. Previously, he interned at Planck AI, where he built an AI red-teaming pipeline.",
@@ -403,7 +403,7 @@ export const about = {
       team: {
         name: "team",
         alt: "The four members of Team 4C² holding up a HackOHIO shirt in the Ohio Union ballroom.",
-        caption: "Team 4C², left to right: Mitchell Eickhoff, Konrad Gozon, Jason Seh, and Rocky Shao.",
+        caption: "Team 4C², left to right: Mitchell Eickhoff, Konrád Gózon, Jason Seh, and Rocky Shao.",
       },
     },
   },
