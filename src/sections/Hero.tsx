@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { ArrowDown, Github, Trophy } from "lucide-react";
+import { ArrowDown, Github } from "lucide-react";
 import { site } from "../content";
 import { cn } from "../lib/cn";
 import { pressable } from "../components/Section";
@@ -34,17 +34,7 @@ export function Hero() {
       style={reduce ? undefined : { y, opacity }}
       className="mx-auto flex min-h-[calc(100dvh-3.5rem)] max-w-6xl flex-col justify-center px-4 py-12 sm:px-6 sm:py-20"
     >
-      {/* Award badge lands first, slightly large, then settles. */}
-      <motion.p
-        initial={{ opacity: 0, scale: 1.15 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ type: "spring", duration: 0.45, bounce: 0 }}
-        className="inline-flex items-center gap-2 self-start rounded-full border border-emerald-500/40 bg-emerald-500/10 py-1.5 pl-2 pr-3 text-sm font-medium text-emerald-200"
-      >
-        <Trophy className="size-4 text-emerald-400" aria-hidden />
-        {site.award} · {site.event}
-      </motion.p>
-      <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-tight sm:mt-4 sm:text-5xl lg:text-6xl">
+      <h1 className="max-w-4xl text-4xl font-semibold leading-tight sm:mt-4 sm:text-5xl lg:text-6xl">
         {words.map((word, i) => (
           <span key={i}>
             <motion.span {...fade(0.05 + i * 0.03)} className="inline-block">

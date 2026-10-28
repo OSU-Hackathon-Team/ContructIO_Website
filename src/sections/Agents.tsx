@@ -135,7 +135,7 @@ export function Agents() {
           </ul>
         </div>
       </motion.div>
-      <p className="mt-4 text-xs text-stone-500">Roles from models.json: configuration, not proof of a live run.</p>
+      
     </Section>
   );
 }

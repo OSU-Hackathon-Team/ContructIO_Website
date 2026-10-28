@@ -160,7 +160,7 @@ export function Architecture() {
           </p>
         ))}
       </Reveal>
-      <p className="mt-4 text-xs text-stone-500">Model roles from models.json. Dashed: separate CLI path.</p>
+      
     </Section>
   );
 }

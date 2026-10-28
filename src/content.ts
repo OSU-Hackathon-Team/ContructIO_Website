@@ -335,6 +335,8 @@ export interface Member {
   linkedin?: string;
   github?: string;
   email?: string;
+  /** A PDF under public/, e.g. "team/alex-resume.pdf", or a full URL. */
+  resume?: string;
 }
 
 // TODO: replace with your team.
@@ -342,29 +344,36 @@ export const team: Member[] = [
   {
     name: "Jason Seh",
     role: "Cloud Infrastructure & Feature Implementation",
-    bio: "AI Engineering Intern at The Center for Software Innovation x Honda and AI/ML Research Engineer at NSF ICICLE AI Institute.",
-    linkedin: "https://www.linkedin.com/in/TODO",
-    github: "https://github.com/TODO",
+    photo: "team/jason.jpg",
+    bio: "Jason Seh is an AI Engineering Intern at the Center for Software Innovation, working with Honda, and an AI/ML Research Engineer at the NSF ICICLE AI Institute. His work spans machine learning research, AI-powered software development, and the design of scalable systems that apply artificial intelligence to real-world problems.",
+    linkedin: "https://www.linkedin.com/in/jason-seh/",
+    github: "https://github.com/JassehXia",
+    resume: "resumes/Seh_Resume.pdf",
   },
   {
     name: "Mitchell Eickhoff",
     role: "Reverse Engineering Engine",
-    bio: "Placeholder",
-    linkedin: "https://www.linkedin.com/in/TODO",
-    github: "https://github.com/TODO",
+    photo: "team/mitch.jpg",
+    bio: "Mitchell Eickhoff is a Computer Science and Engineering major with experience in every major programming language, a love for low level development, and cybersecurity. With experience in CTFs, hackathons, hardware hacking, and open source contribution.",
+    linkedin: "https://www.linkedin.com/in/mitchell-eickhoff-182a3a35a/",
+    github: "https://github.com/PsychedelicPalimpsest",
+    resume: "resumes/Eickhoff_Mitchell_Resume_Aug26.pdf",
   },
   {
     name: "Konrad Gozon",
     role: "Feature and Spec Extraction",
     bio: "Placeholder",
-    linkedin: "https://www.linkedin.com/in/TODO",
-    github: "https://github.com/TODO",
+    linkedin: "https://www.linkedin.com/in/konrad-gozon/",
+    github: "https://github.com/25kgozon",
+    resume: "team/TODO-resume.pdf",
   },
   {
     name: "Rocky Shao",
     role: "Slideshow and Video",
-    bio: "Placeholder",
-    linkedin: "https://www.linkedin.com/in/TODO",
-    github: "https://github.com/TODO",
+    photo: "team/rocky.jpg",
+    bio: "Rocky Shao is a Computer Engineering student at Ohio State with experience in embedded systems, FPGA design, and autonomous vehicle software. He brings hands-on hardware and coding skills to turn ambitious ideas into working prototypes.",
+    linkedin: "https://www.linkedin.com/in/rocky-shao/",
+    github: "https://github.com/Rocky0Shao",
+    resume: "resumes/Rocky Shao Resume.pdf",
   },
 ];

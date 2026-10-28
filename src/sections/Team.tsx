@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { FileText, Github, Linkedin, Mail } from "lucide-react";
 import { team, type Member } from "../content";
 import { pressable, Reveal, Section } from "../components/Section";
 import { cn } from "../lib/cn";
@@ -49,6 +49,17 @@ export function Team() {
               {m.github && (
                 <a href={m.github} target="_blank" rel="noreferrer" aria-label={`${m.name} on GitHub`} className={iconLink}>
                   <Github className="size-4" aria-hidden />
+                </a>
+              )}
+              {m.resume && (
+                <a
+                  href={/^https?:/.test(m.resume) ? m.resume : `${import.meta.env.BASE_URL}${encodeURI(m.resume)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${m.name}'s résumé`}
+                  className={iconLink}
+                >
+                  <FileText className="size-4" aria-hidden />
                 </a>
               )}
               {m.email && (
